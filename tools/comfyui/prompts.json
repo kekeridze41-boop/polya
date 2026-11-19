@@ -1,0 +1,1368 @@
+{
+  "motifs": {
+    "reference": [
+      {
+        "title": "Гончар за кругом",
+        "subject": "potter's hands cupping a small clay bowl, fingers seen from the side",
+        "tags": [
+          "руки",
+          "глина",
+          "гончар"
+        ],
+        "topic": "люди",
+        "interest": "Изучить захват и положение больших пальцев",
+        "view": "Framing from wrists to rim; side view with the near thumb separated from the bowl",
+        "media": [
+          "photo",
+          "graphite",
+          "ink"
+        ]
+      },
+      {
+        "title": "Щенок потягивается",
+        "subject": "a puppy stretching forward with its hindquarters raised",
+        "tags": [
+          "собака",
+          "поза",
+          "движение"
+        ],
+        "topic": "животные",
+        "interest": "Понять перенос веса в растяжке",
+        "view": "Low side view with all points of contact visible",
+        "media": [
+          "photo",
+          "graphite",
+          "ink"
+        ]
+      },
+      {
+        "title": "Каменная арка в разрезе",
+        "subject": "side view of the joints and blocks in a low stone arch",
+        "tags": [
+          "арка",
+          "архитектура",
+          "камень"
+        ],
+        "topic": "архитектура",
+        "interest": "Разобрать кладку и опоры арки",
+        "view": "Near profile; keep the stone joints readable from the spring line to the crown",
+        "media": [
+          "photo",
+          "graphite",
+          "ink"
+        ]
+      },
+      {
+        "title": "Папоротник снизу",
+        "subject": "underside of a fern frond with its leaf joints exposed",
+        "tags": [
+          "папоротник",
+          "растения",
+          "листья"
+        ],
+        "topic": "растения",
+        "interest": "Увидеть, как отходят листочки от стебля",
+        "view": "Under the frond, with the junctions backlit and no view of the pot",
+        "media": [
+          "macro",
+          "photo",
+          "watercolor",
+          "graphite"
+        ]
+      },
+      {
+        "title": "Окно мастерской",
+        "subject": "a workbench and two open window panels in an ordinary repair shop",
+        "tags": [
+          "мастерская",
+          "окно",
+          "интерьер"
+        ],
+        "topic": "быт",
+        "interest": "Сравнить дневное освещение двух оконных створок",
+        "view": "View from the end of the bench, with a readable sill and one clear daylight source",
+        "media": [
+          "photo",
+          "watercolor",
+          "gouache"
+        ]
+      },
+      {
+        "title": "Колено в согнутой позе",
+        "subject": "seated figure with one knee drawn up, loose work trousers and a plain wall",
+        "tags": [
+          "поза",
+          "тело",
+          "ткань"
+        ],
+        "topic": "люди",
+        "interest": "Понять перспективное сокращение колена",
+        "view": "Three-quarter side view at seated eye level; separate the ankle and supporting knee",
+        "media": [
+          "photo",
+          "graphite",
+          "charcoal"
+        ]
+      },
+      {
+        "title": "Пустая сумка",
+        "subject": "a collapsed canvas tote, its seam and two straps visible",
+        "tags": [
+          "сумка",
+          "ткань",
+          "складки"
+        ],
+        "topic": "материалы",
+        "interest": "Проследить шов через сопротивление ткани",
+        "view": "Frame the tote flat from above, one strap free and the other following the sag",
+        "media": [
+          "photo",
+          "graphite",
+          "ink"
+        ]
+      },
+      {
+        "title": "Велосипедная втулка",
+        "subject": "a bicycle wheel hub and a short section of its spokes",
+        "tags": [
+          "велосипед",
+          "металл",
+          "деталь"
+        ],
+        "topic": "техника",
+        "interest": "Разобрать крепление спиц у втулки",
+        "view": "Oblique close crop with one flange sharp and a short run of alternating spokes visible",
+        "media": [
+          "macro",
+          "photo",
+          "graphite"
+        ]
+      },
+      {
+        "title": "Рогоз на берегу",
+        "subject": "stalks and seed heads of cattails at the edge of a pond",
+        "tags": [
+          "рогоз",
+          "растения",
+          "берег"
+        ],
+        "topic": "растения",
+        "interest": "Сравнить толщину стеблей и профиль семенных головок",
+        "view": "Side view against open pond water, letting individual stalks separate naturally",
+        "media": [
+          "photo",
+          "watercolor",
+          "ink"
+        ]
+      },
+      {
+        "title": "Куртка на спинке стула",
+        "subject": "a heavy jacket draped over a straight chair back",
+        "tags": [
+          "одежда",
+          "стул",
+          "складки"
+        ],
+        "topic": "быт",
+        "interest": "Увидеть, где стул удерживает вес куртки",
+        "view": "Side view at shoulder height; the backrest shows where the heavy fabric changes direction",
+        "media": [
+          "photo",
+          "graphite",
+          "charcoal"
+        ]
+      },
+      {
+        "title": "Кусок кирпича",
+        "subject": "one chipped brick showing its broken pores and layered edge",
+        "tags": [
+          "кирпич",
+          "фактура",
+          "поры"
+        ],
+        "topic": "материалы",
+        "interest": "Сравнить пористый разлом и гладкую грань",
+        "view": "Raking side light travels across one broken face and the intact corner",
+        "media": [
+          "macro",
+          "photo",
+          "graphite"
+        ]
+      },
+      {
+        "title": "Клешня краба",
+        "subject": "a crab claw and its visible hinge against a neutral surface",
+        "tags": [
+          "краб",
+          "сустав",
+          "животные"
+        ],
+        "topic": "животные",
+        "interest": "Рассмотреть шарнир клешни",
+        "view": "Single claw in profile, hinge in focus without the rest of the animal",
+        "media": [
+          "macro",
+          "graphite",
+          "ink"
+        ]
+      },
+      {
+        "title": "Крыша павильона",
+        "subject": "a small market pavilion roof from below, exposing rafters and fasteners",
+        "tags": [
+          "павильон",
+          "крыша",
+          "архитектура"
+        ],
+        "topic": "архитектура",
+        "interest": "Разобрать узлы крепления крыши",
+        "view": "View from beneath one corner, keeping the rafters and two fasteners legible",
+        "media": [
+          "photo",
+          "ink",
+          "graphite"
+        ]
+      },
+      {
+        "title": "Кухня перед завтраком",
+        "subject": "corner of an ordinary kitchen, a single mug and an unmade table",
+        "tags": [
+          "кухня",
+          "утро",
+          "быт"
+        ],
+        "topic": "быт",
+        "interest": "Изучить поведение мягкого утреннего света в кухне",
+        "view": "Standing eye level from the doorway; window light reaches the table one side at a time",
+        "media": [
+          "photo",
+          "watercolor",
+          "gouache"
+        ]
+      }
+    ],
+    "ambiguous": [
+      {
+        "title": "Корни в глинистом обрыве",
+        "subject": "exposed roots in a clay bank, their branching outline hovering between a bare tree and a standing figure",
+        "tags": [
+          "корни",
+          "силуэт",
+          "глина"
+        ],
+        "topic": "природа",
+        "interest": "Человеческая фигура читается только в разветвлении корней",
+        "view": "Frame the bank frontally; keep the apparent shoulders inside the outline of the roots",
+        "media": [
+          "photo",
+          "graphite",
+          "charcoal"
+        ]
+      },
+      {
+        "title": "Складки светлой ткани",
+        "subject": "off-white cloth folds loosely suggesting the planes of a turned face",
+        "tags": [
+          "ткань",
+          "складки",
+          "лицо"
+        ],
+        "topic": "материалы",
+        "interest": "Намёк на лицо возникает из светотени ткани",
+        "view": "Let one ridge suggest a brow in oblique light; other creases remain cloth",
+        "media": [
+          "photo",
+          "graphite",
+          "charcoal",
+          "pastel"
+        ]
+      },
+      {
+        "title": "Каменная гряда",
+        "subject": "two weathered rocks whose shared contour faintly resembles a curled animal",
+        "tags": [
+          "скалы",
+          "камень",
+          "силуэт"
+        ],
+        "topic": "природа",
+        "interest": "Читается общая поза спящего зверя без деталей",
+        "view": "Frame two rocks low against the horizon so their joint outline suggests a curled back",
+        "media": [
+          "photo",
+          "graphite",
+          "watercolor"
+        ]
+      },
+      {
+        "title": "Тень лестничных перил",
+        "subject": "overlapping cast shadows from stair railings suggesting an unknown figure in passing",
+        "tags": [
+          "тени",
+          "перила",
+          "силуэт"
+        ],
+        "topic": "архитектура",
+        "interest": "В наложении теней угадывается движение человека",
+        "view": "Frame only the wall and crossing shadows; let a break in their edges interrupt the resemblance",
+        "media": [
+          "photo",
+          "ink",
+          "graphite"
+        ]
+      },
+      {
+        "title": "Край низкого облака",
+        "subject": "edge of a low cloud bank with a profile that almost resembles a long-bodied animal",
+        "tags": [
+          "облака",
+          "небо",
+          "профиль"
+        ],
+        "topic": "природа",
+        "interest": "Профиль облака напоминает животное лишь местами",
+        "view": "Let the suggestion appear at one edge of the cloud while the rest disperses",
+        "media": [
+          "photo",
+          "pastel",
+          "watercolor"
+        ]
+      },
+      {
+        "title": "Неровный берег",
+        "subject": "an irregular shoreline and its reflection, together suggesting a second landscape inside the first",
+        "tags": [
+          "берег",
+          "отражение",
+          "пейзаж"
+        ],
+        "topic": "природа",
+        "interest": "Из берега и отражения возникает иной возможный пейзаж",
+        "view": "Frame across the waterline so the reflection interrupts, rather than mirrors, the shoreline",
+        "media": [
+          "photo",
+          "watercolor",
+          "ink"
+        ]
+      },
+      {
+        "title": "Следы на мокрой бумаге",
+        "subject": "a few connected water stains on paper whose edges briefly suggest a bent figure",
+        "tags": [
+          "пятна",
+          "бумага",
+          "поза"
+        ],
+        "topic": "материалы",
+        "interest": "Разрез пятна подсказывает жест фигуры",
+        "view": "Keep the bent contour readable in one patch, with bare paper between the other transfers",
+        "media": [
+          "ink",
+          "watercolor",
+          "monotype"
+        ]
+      },
+      {
+        "title": "Кора старого дерева",
+        "subject": "overlapping strips of bark suggesting a profile only at one angle",
+        "tags": [
+          "кора",
+          "дерево",
+          "профиль"
+        ],
+        "topic": "природа",
+        "interest": "Кора напоминает профиль при одном угле освещения",
+        "view": "Use a close oblique view; side light picks out one ridge while the surrounding bark stays legible",
+        "media": [
+          "macro",
+          "photo",
+          "graphite"
+        ]
+      },
+      {
+        "title": "Выгнутая полоса песка",
+        "subject": "a wind-carved sand ridge with a silhouette between a wing and a folded piece of cloth",
+        "tags": [
+          "песок",
+          "ветер",
+          "силуэт"
+        ],
+        "topic": "природа",
+        "interest": "Гребень песка балансирует между тканью и крылом",
+        "view": "Frame along the ridge and use a short shadow to separate its lip from the flat sand",
+        "media": [
+          "photo",
+          "graphite",
+          "pastel"
+        ]
+      },
+      {
+        "title": "Тень от комнатного растения",
+        "subject": "a houseplant's fragmented shadow faintly resembling a hand or a bird wing",
+        "tags": [
+          "растение",
+          "тень",
+          "силуэт"
+        ],
+        "topic": "быт",
+        "interest": "Тень растения допускает два прочтения",
+        "view": "Only part of the shadow falls into the frame; the leaf gaps suggest either fingers or a wing",
+        "media": [
+          "photo",
+          "ink",
+          "watercolor"
+        ]
+      },
+      {
+        "title": "Морщина на фольге",
+        "subject": "one crumpled foil ridge and its highlight, an almost mountainous profile",
+        "tags": [
+          "фольга",
+          "рельеф",
+          "пейзаж"
+        ],
+        "topic": "материалы",
+        "interest": "Горный контур угадывается в одной морщине фольги",
+        "view": "Use raking light on a close crop; the foil grain remains visible beside the ridge",
+        "media": [
+          "macro",
+          "photo"
+        ]
+      },
+      {
+        "title": "Сходящиеся ветви",
+        "subject": "two branches crossing, with an uncertain animal-like gap between them",
+        "tags": [
+          "ветви",
+          "контур",
+          "пустота"
+        ],
+        "topic": "природа",
+        "interest": "Животное угадывается в просвете между ветвями",
+        "view": "Frame the crossing branches against a clear sky, keeping the suggestive gap open",
+        "media": [
+          "photo",
+          "ink",
+          "graphite"
+        ]
+      },
+      {
+        "title": "Отпечатки краски",
+        "subject": "two soft-edged paint transfers with one recognizable silhouette emerging where they overlap",
+        "tags": [
+          "отпечаток",
+          "пятно",
+          "силуэт"
+        ],
+        "topic": "материалы",
+        "interest": "В месте нахлёста двух отпечатков появляется возможный силуэт",
+        "view": "Keep both transfer shapes soft and leave the suggestion at their shared edge",
+        "media": [
+          "monotype",
+          "ink",
+          "watercolor"
+        ]
+      },
+      {
+        "title": "Обломки мела",
+        "subject": "three chalk fragments and an intervening shadow with a faint profile resemblance",
+        "tags": [
+          "мел",
+          "тень",
+          "профиль"
+        ],
+        "topic": "быт",
+        "interest": "В короткой тени обломка мела угадывается профиль",
+        "view": "A low side view follows the cast shadow; reveal only part of its hint of a profile",
+        "media": [
+          "photo",
+          "graphite",
+          "charcoal"
+        ]
+      },
+      {
+        "title": "Механизм с рычагами",
+        "subject": "two crossing levers and a hinge whose outline suggests an insect only from the side",
+        "tags": [
+          "механизм",
+          "силуэт",
+          "насекомое"
+        ],
+        "topic": "техника",
+        "interest": "Сочленения механизма напоминают насекомое",
+        "view": "Frame the hinge and two crossed levers at an angle; the likeness stays in their silhouette",
+        "media": [
+          "macro",
+          "photo",
+          "graphite"
+        ]
+      },
+      {
+        "title": "Профиль крыши",
+        "subject": "an ordinary roof and side wall that briefly suggest the outline of a head",
+        "tags": [
+          "архитектура",
+          "силуэт",
+          "профиль"
+        ],
+        "topic": "архитектура",
+        "interest": "Здание на мгновение читается как голова",
+        "view": "Frame the roofline in profile against open sky; let the facade remain an ordinary building",
+        "media": [
+          "photo",
+          "ink",
+          "graphite"
+        ]
+      }
+    ],
+    "process": [
+      {
+        "title": "Рябь под дождём",
+        "subject": "small rain rings intersecting and dissolving across a puddle",
+        "tags": [
+          "дождь",
+          "рябь",
+          "вода"
+        ],
+        "topic": "погода",
+        "interest": "Увидеть, как круги сталкиваются и теряют форму",
+        "view": "Look down near the edge of the puddle; show intersections between a new ring and two fading ones",
+        "media": [
+          "photo",
+          "watercolor",
+          "ink"
+        ]
+      },
+      {
+        "title": "Свет через рифлёное стекло",
+        "subject": "light refracted through ribbed glass into uneven bright strips",
+        "tags": [
+          "свет",
+          "стекло",
+          "преломление"
+        ],
+        "topic": "свет",
+        "interest": "Различить преломление света и ритм полос",
+        "view": "Frame across the ribbed pane and the patch of wall where its light bends",
+        "media": [
+          "photo",
+          "watercolor",
+          "gouache"
+        ],
+        "minimal": "Keep the two clearest bands on the wall and enough of the pane to show where they come from"
+      },
+      {
+        "title": "Иней на металлической сетке",
+        "subject": "frost crystals spreading unevenly along a wire mesh",
+        "tags": [
+          "иней",
+          "сетка",
+          "кристаллы"
+        ],
+        "topic": "погода",
+        "interest": "Разобрать рост кристаллов от поверхности проволоки",
+        "view": "Use close side light to show where crystals grow out from the mesh",
+        "media": [
+          "macro",
+          "photo",
+          "graphite"
+        ]
+      },
+      {
+        "title": "Дым над погасшей спичкой",
+        "subject": "a thin trail of smoke breaking into several soft curls",
+        "tags": [
+          "дым",
+          "движение",
+          "завитки"
+        ],
+        "topic": "движение",
+        "interest": "Проследить подъём и рассеивание дыма",
+        "view": "Keep the match at the bottom edge; show the direction of the transparent plume against a darker field",
+        "media": [
+          "photo",
+          "graphite",
+          "ink",
+          "pastel"
+        ],
+        "minimal": "Reduce the plume to the point where the first bend in the smoke fades into the background"
+      },
+      {
+        "title": "Трещина в высыхающей глине",
+        "subject": "drying clay with short branches breaking away from one irregular crack",
+        "tags": [
+          "глина",
+          "трещины",
+          "высыхание"
+        ],
+        "topic": "материалы",
+        "interest": "Рассмотреть разветвление трещины и корки глины",
+        "view": "Low light across the clay; follow one fracture from a wide split to a hairline",
+        "media": [
+          "macro",
+          "photo",
+          "graphite",
+          "ink"
+        ]
+      },
+      {
+        "title": "Плавающее отражение",
+        "subject": "vertical window reflections stretched and interrupted by gently moving water",
+        "tags": [
+          "отражение",
+          "окно",
+          "вода"
+        ],
+        "topic": "свет",
+        "interest": "Увидеть, как волна прерывает вертикальное отражение",
+        "view": "Use a low oblique view with one straight reflection interrupted at two heights",
+        "media": [
+          "photo",
+          "watercolor",
+          "ink"
+        ]
+      },
+      {
+        "title": "Скользящая тень",
+        "subject": "the soft and hard edges of a cast shadow meeting across a bent sheet",
+        "tags": [
+          "тень",
+          "складки",
+          "свет"
+        ],
+        "topic": "свет",
+        "interest": "Сравнить мягкую и резкую кромки тени",
+        "view": "Fold the sheet across one diagonal, allowing the same shadow to change softness on either side",
+        "media": [
+          "photo",
+          "graphite",
+          "gouache"
+        ]
+      },
+      {
+        "title": "Пар на холодном стекле",
+        "subject": "condensation beads collecting into a few tiny tracks on glass",
+        "tags": [
+          "стекло",
+          "конденсат",
+          "капли"
+        ],
+        "topic": "погода",
+        "interest": "Различить отдельные капли и следы их слияния",
+        "view": "Look across the pane in grazing light, where two small tracks gather several droplets",
+        "media": [
+          "macro",
+          "photo",
+          "watercolor"
+        ]
+      },
+      {
+        "title": "Движение ткани",
+        "subject": "successive soft folds along the edge of a cloth lifted by the wind",
+        "tags": [
+          "ткань",
+          "ветер",
+          "движение"
+        ],
+        "topic": "движение",
+        "interest": "Увидеть направление ветра по складкам",
+        "view": "Frame along the cloth edge, with the largest fold near the point where wind lifts it",
+        "media": [
+          "photo",
+          "graphite",
+          "ink",
+          "pastel"
+        ]
+      },
+      {
+        "title": "Пятно пигмента в воде",
+        "subject": "pigment spreading through water, leaving a dark concentration and thin translucent edges",
+        "tags": [
+          "пигмент",
+          "вода",
+          "растекание"
+        ],
+        "topic": "материалы",
+        "interest": "Сравнить плотный центр пигмента с прозрачным краем",
+        "view": "Use a side-lit close view of the spreading front; keep one pale tendril and a clear boundary with water",
+        "media": [
+          "photo",
+          "watercolor"
+        ]
+      },
+      {
+        "title": "Полосы от жалюзи",
+        "subject": "parallel bands of light bending halfway across a textured corner",
+        "tags": [
+          "жалюзи",
+          "свет",
+          "ритм"
+        ],
+        "topic": "свет",
+        "interest": "Проследить перелом световых полос на углу",
+        "view": "Frame the corner so the change of angle is visible in consecutive bands",
+        "media": [
+          "photo",
+          "gouache",
+          "digital"
+        ]
+      },
+      {
+        "title": "Пена у кромки воды",
+        "subject": "flecks of foam joining and breaking apart against wet sand",
+        "tags": [
+          "пена",
+          "песок",
+          "море"
+        ],
+        "topic": "природа",
+        "interest": "Увидеть, как островки пены распадаются на кромке",
+        "view": "Use an oblique view along the wet sand to follow one continuous edge into broken flecks",
+        "media": [
+          "photo",
+          "watercolor",
+          "ink"
+        ]
+      },
+      {
+        "title": "Снежная крупа на стекле",
+        "subject": "fine grains of melting snow with tiny refractions at their edges",
+        "tags": [
+          "снег",
+          "стекло",
+          "таяние"
+        ],
+        "topic": "погода",
+        "interest": "Наблюдать границу таяния снежных зёрен",
+        "view": "Close view at the point where a sharp grain becomes a shallow clear drop",
+        "media": [
+          "macro",
+          "photo",
+          "watercolor"
+        ]
+      },
+      {
+        "title": "Туман вдоль дороги",
+        "subject": "a strip of fog gradually obscuring regularly spaced roadside posts",
+        "tags": [
+          "туман",
+          "глубина",
+          "дорога"
+        ],
+        "topic": "погода",
+        "interest": "Понять, как теряется контраст в тумане",
+        "view": "Use receding roadside posts as a scale for visibility; let farther poles disappear in stages",
+        "media": [
+          "photo",
+          "pastel",
+          "watercolor"
+        ]
+      }
+    ],
+    "finished": [
+      {
+        "title": "Ансамбль из чашек",
+        "subject": "a small imaginary orchestra assembled from chipped porcelain cups",
+        "tags": [
+          "фарфор",
+          "музыка",
+          "сюрреализм"
+        ],
+        "topic": "странная сцена",
+        "interest": "Собрать фарфоровые формы в странный ансамбль",
+        "view": "Group the cups in three height tiers; reserve the strongest accent for one cracked rim",
+        "media": [
+          "gouache",
+          "collage",
+          "digital"
+        ]
+      },
+      {
+        "title": "Дежурный на крыше",
+        "subject": "an odd rooftop attendant looking after a flock of paper birds",
+        "tags": [
+          "крыша",
+          "птицы",
+          "город"
+        ],
+        "topic": "архитектура",
+        "interest": "Показать фигуру и птиц на общем силуэте крыши",
+        "view": "Low horizon and enough space between roof edges to read the flock",
+        "media": [
+          "gouache",
+          "linocut",
+          "collage"
+        ]
+      },
+      {
+        "title": "Рынок на причале",
+        "subject": "an evening market set up on a narrow pier, bright crates stacked against dark water",
+        "tags": [
+          "рынок",
+          "причал",
+          "вода"
+        ],
+        "topic": "быт",
+        "interest": "Соединить ритм ящиков с глубиной воды",
+        "view": "View along the pier; crate edges recede while one strip of dark water stays open",
+        "media": [
+          "gouache",
+          "watercolor",
+          "digital"
+        ]
+      },
+      {
+        "title": "Сад на полке",
+        "subject": "a tiny garden cultivated in drawers pulled halfway open",
+        "tags": [
+          "сад",
+          "предметы",
+          "сюрреализм"
+        ],
+        "topic": "странная сцена",
+        "interest": "Связать открытые ящики в один маленький сад",
+        "view": "Use a front view with one shallow drawer leading the eye up to two deeper ones",
+        "media": [
+          "gouache",
+          "collage",
+          "digital"
+        ]
+      },
+      {
+        "title": "Танец в прачечной",
+        "subject": "two people dancing among rows of round washing-machine doors",
+        "tags": [
+          "танец",
+          "прачечная",
+          "движение"
+        ],
+        "topic": "люди",
+        "interest": "Поставить пластичные фигуры против круглых дверец",
+        "view": "Look slightly from the side; a clear gap between the dancers separates the gesture from the machines",
+        "media": [
+          "gouache",
+          "pastel",
+          "linocut"
+        ]
+      },
+      {
+        "title": "Ночной кондуктор",
+        "subject": "a conductor punching tickets on a nearly empty tram with patterned upholstery",
+        "tags": [
+          "трамвай",
+          "ночь",
+          "город"
+        ],
+        "topic": "быт",
+        "interest": "Собрать камерный образ вечернего трамвая",
+        "view": "View down the aisle; repeat seat patterns without merging them into the conductor",
+        "media": [
+          "gouache",
+          "pastel",
+          "linocut"
+        ]
+      },
+      {
+        "title": "Птица из газет",
+        "subject": "a bold collage of a bird built from torn blocks of newsprint and enamel color",
+        "tags": [
+          "птица",
+          "бумага",
+          "коллаж"
+        ],
+        "topic": "странная сцена",
+        "interest": "Собрать силуэт из разных краёв газетных вырезок",
+        "view": "Keep the longest torn edge against an open patch of background",
+        "media": [
+          "collage"
+        ]
+      },
+      {
+        "title": "Лестница в проволоке",
+        "subject": "a graphic maze of stairways with two figures crossing on different levels",
+        "tags": [
+          "лестница",
+          "фигуры",
+          "пространство"
+        ],
+        "topic": "архитектура",
+        "interest": "Показать два уровня движения в лестничной сетке",
+        "view": "Keep the two figures at different heights and repeat the main stair angle",
+        "media": [
+          "digital",
+          "linocut",
+          "collage"
+        ]
+      },
+      {
+        "title": "Аквариум в книжном шкафу",
+        "subject": "an illuminated fish tank tucked among uneven shelves in an ordinary room",
+        "tags": [
+          "аквариум",
+          "книги",
+          "интерьер"
+        ],
+        "topic": "быт",
+        "interest": "Сделать аквариум единственным источником света на полке",
+        "view": "Use the side of the shelf to catch a band of spill light and leave the book rows legible",
+        "media": [
+          "gouache",
+          "pastel",
+          "watercolor"
+        ]
+      },
+      {
+        "title": "Отражение ярмарки",
+        "subject": "a painterly fairground reflected in the wet asphalt after closing",
+        "tags": [
+          "ярмарка",
+          "отражение",
+          "дождь"
+        ],
+        "topic": "свет",
+        "interest": "Связать ярмарку и отражение через цветовые пятна",
+        "view": "Let the reflection occupy the lower half, breaking up the brightest spots on the ground",
+        "media": [
+          "watercolor",
+          "gouache",
+          "pastel"
+        ]
+      }
+    ]
+  },
+  "objects": [
+    {
+      "title": "Ржавый ключ",
+      "text": "a rusty key",
+      "material": "металл",
+      "scale": "small",
+      "shape": "long",
+      "surface": "rough",
+      "natural": false
+    },
+    {
+      "title": "Ракушка",
+      "text": "a ribbed seashell",
+      "material": "природа",
+      "scale": "small",
+      "shape": "round",
+      "surface": "rough",
+      "natural": true
+    },
+    {
+      "title": "Красная лента",
+      "text": "a red ribbon",
+      "material": "ткань",
+      "scale": "medium",
+      "shape": "long",
+      "surface": "smooth",
+      "natural": false
+    },
+    {
+      "title": "Стеклянный шарик",
+      "text": "a glass marble",
+      "material": "стекло",
+      "scale": "small",
+      "shape": "round",
+      "surface": "smooth",
+      "natural": false
+    },
+    {
+      "title": "Мелок",
+      "text": "a stub of chalk",
+      "material": "канцелярия",
+      "scale": "small",
+      "shape": "long",
+      "surface": "rough",
+      "natural": false
+    },
+    {
+      "title": "Сухой лист",
+      "text": "a dry leaf",
+      "material": "природа",
+      "scale": "medium",
+      "shape": "long",
+      "surface": "rough",
+      "natural": true
+    },
+    {
+      "title": "Нитяная катушка",
+      "text": "a spool of blue thread",
+      "material": "ткань",
+      "scale": "small",
+      "shape": "round",
+      "surface": "rough",
+      "natural": false
+    },
+    {
+      "title": "Ломтик груши",
+      "text": "a slice of pear",
+      "material": "еда",
+      "scale": "medium",
+      "shape": "curved",
+      "surface": "smooth",
+      "natural": true
+    },
+    {
+      "title": "Деревянная косточка",
+      "text": "a wooden domino",
+      "material": "дерево",
+      "scale": "small",
+      "shape": "flat",
+      "surface": "smooth",
+      "natural": false
+    },
+    {
+      "title": "Пробка",
+      "text": "a chipped cork stopper",
+      "material": "дерево",
+      "scale": "small",
+      "shape": "long",
+      "surface": "rough",
+      "natural": false
+    },
+    {
+      "title": "Напёрсток",
+      "text": "a brass thimble",
+      "material": "металл",
+      "scale": "small",
+      "shape": "round",
+      "surface": "smooth",
+      "natural": false
+    },
+    {
+      "title": "Чайное ситечко",
+      "text": "a tea strainer",
+      "material": "металл",
+      "scale": "medium",
+      "shape": "round",
+      "surface": "smooth",
+      "natural": false
+    },
+    {
+      "title": "Галька",
+      "text": "a smooth pebble",
+      "material": "камень",
+      "scale": "small",
+      "shape": "round",
+      "surface": "smooth",
+      "natural": true
+    },
+    {
+      "title": "Согнутая карточка",
+      "text": "a bent playing card",
+      "material": "бумага",
+      "scale": "medium",
+      "shape": "flat",
+      "surface": "smooth",
+      "natural": false
+    },
+    {
+      "title": "Обрывок упаковки",
+      "text": "a torn paper wrapper",
+      "material": "бумага",
+      "scale": "medium",
+      "shape": "flat",
+      "surface": "rough",
+      "natural": false
+    },
+    {
+      "title": "Перо",
+      "text": "a small striped feather",
+      "material": "природа",
+      "scale": "medium",
+      "shape": "long",
+      "surface": "rough",
+      "natural": true
+    },
+    {
+      "title": "Белая пуговица",
+      "text": "a white ceramic button",
+      "material": "керамика",
+      "scale": "small",
+      "shape": "round",
+      "surface": "smooth",
+      "natural": false
+    },
+    {
+      "title": "Чашка без ручки",
+      "text": "a handleless porcelain cup",
+      "material": "керамика",
+      "scale": "medium",
+      "shape": "round",
+      "surface": "smooth",
+      "natural": false
+    },
+    {
+      "title": "Мокрая губка",
+      "text": "a damp sponge",
+      "material": "быт",
+      "scale": "medium",
+      "shape": "flat",
+      "surface": "rough",
+      "natural": false
+    },
+    {
+      "title": "Кусок мыла",
+      "text": "a half-used bar of soap",
+      "material": "быт",
+      "scale": "medium",
+      "shape": "flat",
+      "surface": "smooth",
+      "natural": false
+    },
+    {
+      "title": "Пластик от игрушки",
+      "text": "a broken plastic toy wheel",
+      "material": "пластик",
+      "scale": "small",
+      "shape": "round",
+      "surface": "rough",
+      "natural": false
+    },
+    {
+      "title": "Прозрачный колпачок",
+      "text": "a translucent plastic pen cap",
+      "material": "пластик",
+      "scale": "small",
+      "shape": "long",
+      "surface": "smooth",
+      "natural": false
+    },
+    {
+      "title": "Засушенный стручок",
+      "text": "a dried seed pod",
+      "material": "природа",
+      "scale": "medium",
+      "shape": "long",
+      "surface": "rough",
+      "natural": true
+    },
+    {
+      "title": "Ледяной кубик",
+      "text": "a melting ice cube",
+      "material": "лёд",
+      "scale": "small",
+      "shape": "flat",
+      "surface": "smooth",
+      "natural": true
+    }
+  ],
+  "techniques": {
+    "photo": {
+      "name": "Документальная фотография",
+      "text": "documentary photograph with natural local light, ordinary surface detail and no retouching",
+      "negative": "studio glamour, lens flare",
+      "family": "photo",
+      "color": "observed"
+    },
+    "macro": {
+      "name": "Натурная макрофотография",
+      "text": "close observational photograph revealing fine material structure",
+      "negative": "beauty retouching, synthetic 3D materials",
+      "family": "photo",
+      "color": "observed"
+    },
+    "graphite": {
+      "name": "Карандаш, графит",
+      "text": "graphite on matte paper with pressure variation and rubbed construction marks",
+      "negative": "clean digital outlines",
+      "family": "marks",
+      "color": "mono"
+    },
+    "ink": {
+      "name": "Тушь",
+      "text": "brush and nib ink with varied line weight and irregular pooling",
+      "negative": "perfect vector outlines",
+      "family": "marks",
+      "color": "mono"
+    },
+    "watercolor": {
+      "name": "Акварель",
+      "text": "transparent watercolor with damp edges and exposed paper between washes",
+      "negative": "opaque plastic texture",
+      "family": "paint",
+      "color": "flex"
+    },
+    "gouache": {
+      "name": "Гуашь",
+      "text": "matte gouache with visible brush joins and uneven block edges",
+      "negative": "glossy 3D rendering",
+      "family": "paint",
+      "color": "flex"
+    },
+    "pastel": {
+      "name": "Пастель",
+      "text": "dry pastel on toothy paper with pigment caught in the grain",
+      "negative": "smooth airbrushing",
+      "family": "paint",
+      "color": "flex"
+    },
+    "charcoal": {
+      "name": "Уголь",
+      "text": "charcoal values with lifts from a kneaded eraser",
+      "negative": "smooth digital gradients",
+      "family": "marks",
+      "color": "mono"
+    },
+    "linocut": {
+      "name": "Линогравюра",
+      "text": "hand-pulled linocut with blunt cuts and uneven ink pressure",
+      "negative": "glossy rendering",
+      "family": "print",
+      "color": "flex"
+    },
+    "monotype": {
+      "name": "Монотипия",
+      "text": "rough monotype transfer with torn patches and changing ink pressure",
+      "negative": "smooth outlines",
+      "family": "print",
+      "color": "flex"
+    },
+    "collage": {
+      "name": "Коллаж",
+      "text": "cut-paper collage with slightly misaligned cut edges and old paper textures",
+      "negative": "perfect uniform vector contours",
+      "family": "collage",
+      "color": "flex"
+    },
+    "digital": {
+      "name": "Цифровая графика",
+      "text": "flat digital shapes with visible construction seams and limited colors",
+      "negative": "glossy material simulation",
+      "family": "digital",
+      "color": "flex"
+    },
+    "ballpoint": {
+      "name": "Шариковая ручка",
+      "text": "ballpoint marks that double back, with unequal stroke density",
+      "negative": "perfect contour tracing",
+      "family": "marks",
+      "color": "mono"
+    },
+    "crayon": {
+      "name": "Восковые мелки",
+      "text": "wax crayon with uneven pressure and small unfilled gaps",
+      "negative": "smooth photographic finish",
+      "family": "marks",
+      "color": "flex"
+    }
+  },
+  "palettes": [
+    [
+      "тёплая бумага и графит",
+      "warm paper, graphite grey and charcoal",
+      "#f0e6d4,#77736c,#302e2e"
+    ],
+    [
+      "яркие акценты",
+      "coral, ultramarine and lemon yellow",
+      "#f86957,#384baf,#f8e656"
+    ],
+    [
+      "пастельные",
+      "muted lilac, mint and cream",
+      "#af9bc2,#a3c4a8,#f5ebce"
+    ],
+    [
+      "землистые",
+      "brick red, moss and ochre",
+      "#a54431,#58633c,#d0a659"
+    ],
+    [
+      "холодные",
+      "indigo, steel blue and pale ice",
+      "#293357,#557eab,#bbdfeb"
+    ],
+    [
+      "контрастные",
+      "near black purple, peach and green",
+      "#29243e,#ffc0a0,#9cce56"
+    ],
+    [
+      "бирюза и ржавчина",
+      "turquoise, rust and off-white",
+      "#30989c,#c05c38,#f1e7d1"
+    ],
+    [
+      "два тона",
+      "warm white and charcoal only",
+      "#f1ead8,#2e2926"
+    ],
+    [
+      "естественные",
+      "linen grey, stone and wood tones",
+      "#cebfae,#8e8d86,#665348"
+    ],
+    [
+      "пудровые",
+      "dusty pink, faded brick and deep plum",
+      "#d8a8ae,#ab6b58,#4d354c"
+    ]
+  ],
+  "object_studies": [
+    {
+      "title": "Лёд и обрывок упаковки",
+      "subject": "a melting ice cube beside a torn paper wrapper",
+      "tags": [
+        "ледяной кубик",
+        "обрывок упаковки"
+      ],
+      "topic": "необычное соседство",
+      "interest": "Посмотреть, как прозрачная капля меняет читаемость рваной кромки",
+      "view": "Set the wrapper on a tilted window ledge and the ice just uphill; frame only the contact where the water reaches the torn edge",
+      "media": [
+        "photo",
+        "macro",
+        "watercolor"
+      ]
+    },
+    {
+      "title": "Перо и чайное ситечко",
+      "subject": "a striped feather held below a tea strainer",
+      "tags": [
+        "перо",
+        "чайное ситечко"
+      ],
+      "topic": "неожиданная перспектива",
+      "interest": "Сравнить прожилки пера и сетку, глядя сквозь ситечко",
+      "view": "Look through the mesh at the feather behind it, with the feather shaft still visible past the rim",
+      "media": [
+        "photo",
+        "macro",
+        "graphite"
+      ]
+    },
+    {
+      "title": "Катушка на краю скола",
+      "subject": "a spool of blue thread beside the chipped edge of a brick ledge",
+      "tags": [
+        "нитяная катушка",
+        "кирпич"
+      ],
+      "topic": "контраст фактур",
+      "interest": "Сопоставить параллельные нити со сколами кладки",
+      "view": "Place the brick edge almost against the crop; the fine loose thread remains visibly separate from the larger nicks in the ledge",
+      "media": [
+        "photo",
+        "graphite",
+        "ink"
+      ]
+    },
+    {
+      "title": "Галька и чашка в просвете",
+      "subject": "a smooth pebble and a handleless porcelain cup",
+      "tags": [
+        "галька",
+        "чашка без ручки"
+      ],
+      "topic": "неожиданная перспектива",
+      "interest": "Увидеть смещение контуров через прозрачное отражение",
+      "view": "View the pebble on a narrow glass shelf from below; the cup stands on the sill beyond it, seen partly through the glass and partly in reflection",
+      "media": [
+        "photo",
+        "watercolor"
+      ]
+    }
+  ]
+}

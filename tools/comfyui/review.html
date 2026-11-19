@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мастерская референсов · Поля</title>
+<style>
+  :root{color-scheme:dark;font:16px/1.45 system-ui;color:#efe8da;background:#221c18}body{margin:22px auto;padding:0 16px;max-width:1260px}button,select{font:inherit;padding:5px 9px}header,.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}header h1{margin-right:auto}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}article{background:#352923;border:1px solid #665044;padding:10px;border-radius:5px}article h2{font-size:1rem;margin:.4em 0}article p{margin:.4em 0}article .preview{display:block;padding:0;width:100%;border:0;background:#1a1512}img{display:block;width:100%;aspect-ratio:1;object-fit:contain}article small{color:#dfc0a5}dialog{max-width:min(760px,90vw);max-height:90vh;border:1px solid #99765c}dialog img{max-height:56vh}pre{white-space:pre-wrap;overflow-wrap:anywhere}#message{min-height:1.5em}
+</style>
+<style>
+  .studio{display:grid;gap:12px;padding:16px;margin-bottom:16px;background:#352923;border:1px solid #665044;border-radius:6px}.studio p{margin:0}.studio code{overflow-wrap:anywhere}.studio button,.studio select,.studio input{font:inherit}.studio input{width:6rem}.studio .create{padding:10px 24px;background:#a66349;color:#fff;border:1px solid #de9a78;border-radius:4px;font-weight:650}.studio progress{width:min(100%,410px);accent-color:#d58666}.studio [data-online=true]{color:#b4d5a2}.studio [data-online=false]{color:#f2b18b}.history{border-top:1px solid #665044;padding-top:10px}.history select{max-width:100%}
+</style>
+<header><h1>Мастерская референсов</h1></header>
+<section class="studio" aria-label="Генерация">
+  <div class="actions"><strong id="connection" role="status">Проверяю ComfyUI…</strong><button id="recheck">Проверить связь</button></div>
+  <form id="create-form" class="actions"><label>Изображений <select id="count"><option>10</option><option>20</option><option>30</option><option value="custom">Своё число</option></select></label><label id="custom-count-label" hidden>Количество <input id="custom-count" type="number" min="1" max="1000" value="1"></label><button class="create" id="create" type="submit" disabled>Создать</button></form>
+  <div class="actions"><progress id="progress" value="0" max="1" aria-label="Прогресс партии"></progress><span id="progress-text" role="status">Партия ещё не запущена</span><button id="stop" hidden>Остановить после текущего</button></div>
+  <div class="history actions"><label>Партия <select id="batches"><option value="">Все результаты</option></select></label><button id="resume" hidden>Продолжить партию</button><button id="repeat" hidden>Повторить партию</button></div>
+  <div class="actions"><span>Папка результатов</span><code id="folder"></code><button id="open-folder">Открыть папку</button></div>
+</section>
+<header><h2>Галерея</h2><label>Показать <select id="filter"><option value="all">Все</option><option value="selected">Выбранные</option><option value="unreviewed">Без оценки</option><option value="rejected">Отклонённые</option><option value="imported">В каталоге</option></select></label><button id="import-all">Добавить выбранные в Поля</button></header>
+<p id="message" role="status"></p><main id="grid" class="grid"></main>
+<dialog id="detail"><form method="dialog"><button>Закрыть</button></form><h2 id="detail-title"></h2><img id="large" alt=""><pre id="metadata"></pre><details><summary>Workflow с параметрами</summary><pre id="parameters"></pre></details></dialog>
+<script>
+const el = id => document.getElementById(id);
+const labels = {unreviewed:'Без оценки', selected:'Выбран', rejected:'Отклонён', imported:'В каталоге', pending:'Ожидает', submitted:'В ComfyUI', failed:'Ошибка'};
+let candidates = [];
+let workshop = {batches:[],current:{running:false}};
+let connected = false;
+let chosenBatch = '';
+let stoppedBatch = '';
+let galleryKey;
+let refreshSerial = 0;
+async function request(path, method = 'GET', body) {
+  const response = await fetch(path, {method, headers: {'X-Polya-Token':'__ACCESS__', 'Content-Type':'application/json'}, body: body === undefined ? undefined : JSON.stringify(body)});
+  const result = await response.json().catch(() => null);
+  if (!response.ok) throw Error(typeof result?.error === 'string' && result.error.trim() ? result.error : `Сервер вернул HTTP ${response.status}.`);
+  if (result === null) throw Error('Сервер вернул ответ без JSON.');
+  return result;
+}
+function action(text, callback) {
+  const button = document.createElement('button');
+  button.textContent = text;
+  button.onclick = async () => {
+    button.disabled = true;
+    try { await callback(); }
+    catch (error) { el('message').textContent = error.message; }
+    finally { button.disabled = false; }
+  };
+  return button;
+}
+function openCandidate(job) {
+  el('detail-title').textContent = job.title;
+  el('large').hidden = job.status !== 'ready';
+  el('large').src = job.status === 'ready' ? `/candidate/${job.id}/image` : '';
+  el('metadata').textContent = `Направление: ${job.direction_label ?? '—'}\nТехника: ${job.technique}\nТемы: ${job.themes.join(', ')}\n\nПромпт\n${job.positive}\n\nНегативный промпт\n${job.negative}\n\nSeed: ${job.seed}\nКандидат: ${job.id}\nПартия: ${job.batch_id ?? '—'}\nPrompt ID: ${job.prompt_id ?? '—'}\n${job.error ?? ''}`;
+  el('parameters').textContent = '';
+  el('detail').showModal();
+  request(`/candidate/${job.id}/parameters`).then(data => {
+    if (el('detail').open && el('detail-title').textContent === job.title) el('parameters').textContent = JSON.stringify(data, null, 2);
+  }).catch(error => { el('parameters').textContent = error.message; });
+}
+async function importJobs(jobs) {
+  if (!jobs.length || !confirm(`Добавить к локальному каталогу: ${jobs.length}?`)) return;
+  let done = 0;
+  try {
+    for (const job of jobs) { await request(`/api/candidate/${job.id}/import`, 'POST'); done++; }
+  } finally { await refresh(); el('message').textContent = `Добавлено или найдено в каталоге: ${done} из ${jobs.length}.`; }
+}
+function render() {
+  const filter = el('filter').value;
+  const visible = candidates.filter(job => (!chosenBatch || job.batch_id === chosenBatch) && (filter === 'all' || job.review === filter));
+  const key = JSON.stringify([visible, workshop.current.running]);
+  if (key === galleryKey) return;
+  galleryKey = key;
+  el('grid').replaceChildren();
+  if (!visible.length) el('grid').textContent = 'Здесь появятся результаты выбранной партии.';
+  for (const job of visible) {
+    const article = document.createElement('article');
+    const title = document.createElement('h2'); title.textContent = job.title;
+    const state = document.createElement('small'); state.textContent = labels[job.review ?? job.status] ?? job.status;
+    const buttons = document.createElement('div'); buttons.className = 'actions';
+    if (job.status === 'ready') {
+      const preview = action('', () => openCandidate(job)); preview.className = 'preview'; preview.setAttribute('aria-label', `Открыть ${job.title}`);
+      const thumb = document.createElement('img'); thumb.src = `/candidate/${job.id}/thumb`; thumb.alt = ''; thumb.loading = 'lazy'; preview.append(thumb); article.append(preview);
+      if (job.review !== 'imported') {
+        for (const [value, label] of [['selected','Выбрать'],['rejected','Отклонить']]) buttons.append(action(label, async () => {await request(`/api/candidate/${job.id}/${value}`, 'POST'); await refresh();}));
+        if (job.review === 'selected') buttons.append(action('В каталог', () => importJobs([job])));
+      }
+    }
+    if ((job.status === 'failed' || job.status === 'ready') && !workshop.current.running) {
+      buttons.append(action('Повторить', async () => selectNew(await request(`/api/candidate/${job.id}/retry`, 'POST'))));
+    }
+    buttons.append(action('Параметры', () => openCandidate(job)));
+    article.append(title, state, buttons); el('grid').append(article);
+  }
+}
+function drawWorkshop() {
+  const {batches,current,folder} = workshop;
+  const history = el('batches');
+  const key = batches.map(batch => batch.id).join(',');
+  if (history.dataset.items !== key) {
+    history.dataset.items = key;
+    history.replaceChildren(new Option('Все результаты',''), ...batches.map(batch => {
+      const when = batch.created ? new Date(batch.created).toLocaleString('ru-RU') + ' · ' : '';
+      return new Option(`${when}${batch.jobs.length} шт. · ${batch.id.slice(0,8)}`, batch.id);
+    }));
+  }
+  history.value = chosenBatch;
+  el('folder').textContent = folder ?? '';
+  const selected = batches.find(batch => batch.id === chosenBatch);
+  const progressBatch = batches.find(batch => batch.id === current.batch) ?? selected;
+  const states = progressBatch ? candidates.filter(job => job.batch_id === progressBatch.id) : [];
+  const done = states.filter(job => ['ready','failed'].includes(job.status)).length;
+  const suffix = current.error ? ` · ${current.error}` : '';
+  el('progress').max = progressBatch?.jobs.length || 1;
+  el('progress').value = done;
+  el('progress-text').textContent = progressBatch ? `${done} из ${progressBatch.jobs.length}${current.running ? ' · выполняется' : ''}${suffix}` : 'Партия ещё не запущена';
+  el('create').disabled = !connected || current.running;
+  el('stop').hidden = !current.running;
+  el('stop').disabled = stoppedBatch === current.batch;
+  el('repeat').hidden = !selected;
+  el('repeat').disabled = !connected || current.running;
+  el('resume').hidden = !selected || !candidates.some(job => job.batch_id === selected.id && ['pending','submitted'].includes(job.status));
+  el('resume').disabled = !connected || current.running;
+}
+async function refresh() {
+  const serial = ++refreshSerial;
+  const [jobs,status] = await Promise.all([request('/api/candidates'),request('/api/workshop')]);
+  if (serial !== refreshSerial) return;
+  candidates = jobs;
+  workshop = status;
+  drawWorkshop(); render();
+}
+async function checkConnection() {
+  try {
+    const info = await request('/api/connection');
+    connected = info.connected;
+    el('connection').textContent = connected ? `ComfyUI подключён · ${info.device} · в очереди ${info.queue}` : `ComfyUI недоступен · порт ${info.port}`;
+    el('connection').title = info.error ?? '';
+  } catch (error) { connected = false; el('connection').textContent = error.message; }
+  el('connection').dataset.online = connected;
+  drawWorkshop();
+}
+async function selectNew(info) {
+  chosenBatch = info.batch;
+  stoppedBatch = '';
+  el('filter').value = 'all';
+  el('message').textContent = '';
+  await refresh();
+}
+function report(error) { el('message').textContent = error.message; }
+el('recheck').onclick = checkConnection;
+el('count').onchange = () => { el('custom-count-label').hidden = el('count').value !== 'custom'; };
+el('create-form').onsubmit = async event => {
+  event.preventDefault();
+  el('create').disabled = true;
+  try { await selectNew(await request('/api/create','POST',{count:Number(el('count').value === 'custom' ? el('custom-count').value : el('count').value)})); }
+  catch(error) { report(error); drawWorkshop(); }
+};
+el('stop').onclick = async () => {
+  try { await request(`/api/batch/${workshop.current.batch}/stop`, 'POST'); stoppedBatch = workshop.current.batch; drawWorkshop(); el('message').textContent = 'Остановка запрошена.'; }
+  catch(error) { report(error); }
+};
+for (const mode of ['resume','repeat']) el(mode).onclick = () => request(`/api/batch/${chosenBatch}/${mode}`, 'POST').then(selectNew).catch(report);
+el('batches').onchange = () => { chosenBatch = el('batches').value; drawWorkshop(); render(); };
+el('open-folder').onclick = () => request('/api/open-folder','POST').catch(report);
+el('filter').onchange = render;
+el('import-all').onclick = () => importJobs(candidates.filter(job => job.review === 'selected' && (!chosenBatch || job.batch_id === chosenBatch))).catch(report);
+refresh().catch(report);
+checkConnection();
+setInterval(() => refresh().catch(report), 2000);
+setInterval(checkConnection, 12000);
+</script>

@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 840" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="crease-shadow" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="64" y2="0">
+      <stop stop-color="#24150e" stop-opacity="0"/>
+      <stop offset=".31" stop-color="#24150e" stop-opacity=".24"/>
+      <stop offset=".64" stop-color="#24150e" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#24150e" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="crease-light" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="64" y2="0">
+      <stop stop-color="#f4cda5" stop-opacity="0"/>
+      <stop offset=".41" stop-color="#f4cda5" stop-opacity=".20"/>
+      <stop offset=".69" stop-color="#f4cda5" stop-opacity=".14"/>
+      <stop offset="1" stop-color="#f4cda5" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="soften-crease" x="-25%" y="-100%" width="150%" height="300%">
+      <feGaussianBlur stdDeviation="1.7"/>
+    </filter>
+    <radialGradient id="binding-shade">
+      <stop stop-color="#20140d" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#20140d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="dent">
+      <stop stop-color="#25170e" stop-opacity=".29"/>
+      <stop offset=".57" stop-color="#25170e" stop-opacity=".15"/>
+      <stop offset="1" stop-color="#25170e" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="rub">
+      <stop stop-color="#e4bc90" stop-opacity=".23"/>
+      <stop offset="1" stop-color="#e4bc90" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="stain">
+      <stop stop-color="#44231d" stop-opacity=".24"/>
+      <stop offset=".72" stop-color="#44231d" stop-opacity=".14"/>
+      <stop offset="1" stop-color="#44231d" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Short paired curves give the paper shallow ridges with fading ends. -->
+  <g fill="none" stroke-linecap="round">
+    <g transform="translate(28 156) rotate(-25)" filter="url(#soften-crease)">
+      <path stroke="url(#crease-shadow)" stroke-width="6" d="M0 5Q17 -2 33 1T64 -5"/>
+      <path stroke="url(#crease-light)" stroke-width="3.5" d="M0 2Q17 -6 33 -3T64 -8"/>
+    </g>
+    <g transform="translate(43 580) rotate(32) scale(.8)" filter="url(#soften-crease)">
+      <path stroke="url(#crease-shadow)" stroke-width="7" d="M0 3C18 12 27 -7 45 -3Q57 1 64 -4"/>
+      <path stroke="url(#crease-light)" stroke-width="4" d="M0 0C18 8 27 -11 45 -7Q57 -2 64 -6"/>
+    </g>
+    <g transform="translate(1356 214) rotate(22)" filter="url(#soften-crease)">
+      <path stroke="url(#crease-shadow)" stroke-width="6" d="M0 -5C25 -1 30 8 49 3L64 -2"/>
+      <path stroke="url(#crease-light)" stroke-width="3" d="M0 -8C25 -5 30 4 49 -1L64 -5"/>
+    </g>
+    <g transform="translate(1331 748) rotate(-42) scale(.69)" filter="url(#soften-crease)">
+      <path stroke="url(#crease-shadow)" stroke-width="6" d="M0 4Q19 4 29 -1T64 1"/>
+      <path stroke="url(#crease-light)" stroke-width="3.5" d="M0 1Q19 0 29 -5T64 -2"/>
+    </g>
+    <g transform="translate(682 752) rotate(-15) scale(.74)" opacity=".68" filter="url(#soften-crease)">
+      <path stroke="url(#crease-shadow)" stroke-width="6" d="M0 4Q17 -6 35 1T64 1"/>
+      <path stroke="url(#crease-light)" stroke-width="4" d="M0 1Q17 -10 35 -3T64 -2"/>
+    </g>
+  </g>
+
+  <g fill="url(#binding-shade)">
+    <ellipse cx="712" cy="114" rx="12" ry="43" transform="rotate(-7 712 114)"/>
+    <ellipse cx="730" cy="683" rx="15" ry="56" transform="rotate(8 730 683)"/>
+    <ellipse cx="711" cy="782" rx="14" ry="36" transform="rotate(-12 711 782)"/>
+  </g>
+
+  <g fill="url(#dent)">
+    <ellipse cx="34" cy="156" rx="47" ry="16" transform="rotate(10 34 156)"/>
+    <ellipse cx="105" cy="613" rx="48" ry="13" transform="rotate(-16 105 613)"/>
+    <ellipse cx="707" cy="739" rx="33" ry="18" transform="rotate(25 707 739)"/>
+    <ellipse cx="1409" cy="223" rx="43" ry="19" transform="rotate(-15 1409 223)"/>
+    <ellipse cx="1425" cy="529" rx="43" ry="15" transform="rotate(19 1425 529)"/>
+  </g>
+
+  <g fill="url(#rub)">
+    <ellipse cx="19" cy="290" rx="27" ry="110" transform="rotate(3 19 290)"/>
+    <ellipse cx="233" cy="832" rx="146" ry="18"/>
+    <ellipse cx="1395" cy="405" rx="19" ry="78" transform="rotate(-8 1395 405)"/>
+    <ellipse cx="1165" cy="6" rx="103" ry="16"/>
+  </g>
+  <path fill="url(#stain)" d="M38 666Q53 643 80 654T124 680Q128 698 99 710T46 710Q23 695 38 666Z"/>
+  <path fill="url(#stain)" d="M1308 325Q1344 311 1368 337T1371 378Q1344 404 1319 387T1308 325Z"/>
+  <g fill="#35241f" opacity=".25">
+    <path d="M73 680q4-3 5 0t-3 3q-4 0-2-3ZM64 685q2-2 3 0t-2 2q-2-1-1-2ZM84 675q3-1 3 1t-3 1Z"/>
+    <path d="M1367 369q6-2 6 1t-5 3q-4-1-1-4ZM1381 364q2-1 3 1t-2 2q-2 0-1-3Z"/>
+  </g>
+
+  <!-- Broken highlights mark the cut edges and the sheets beneath. -->
+  <g fill="none" stroke-width="1" vector-effect="non-scaling-stroke">
+    <path stroke="#e0af87" opacity=".33" d="M4 41l2 39-1 16 2 37m-2 52 2 66-1 27m0 156 2 37-2 20 1 58m0 153 1 47-2 38m23 44 42-2 59 1 43-1 74 2m57-2 86 1 29-2m601 1 57-1 98 2 47-2m93 0 51 1 46-2m25-117 1-29-2-51m2-137-1-43 2-17-1-46m0-146 1-36-2-37"/>
+    <path stroke="#21140c" opacity=".4" d="M11 76l-2 34 2 28m-1 394 2 37-1 40m18 224 39-1 104 1 64-2m118 2 92-1 35 2m479-1 45-1 70 1 115-1m119 1 61-1 36 1m21-207 2-24-1-29m0-330 1-46-2-23"/>
+  </g>
+</svg>

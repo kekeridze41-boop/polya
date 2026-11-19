@@ -1,0 +1,434 @@
+[
+  {
+    "title": "Птица из ситечек",
+    "technique": "Коллаж",
+    "themes": [
+      "птица",
+      "проволока",
+      "юмор"
+    ],
+    "moods": [
+      "нелепость"
+    ],
+    "palette": [
+      "#30989c",
+      "#c05c38",
+      "#f1e7d1"
+    ],
+    "composition": [
+      "кадрирование"
+    ],
+    "directions": [
+      "odd"
+    ],
+    "id": "comfy-8c27246c9e64f95aa3f05183",
+    "src": "data/references/comfy-8c27246c9e64f95aa3f05183.webp",
+    "sourceHash": "8c27246c9e64f95aa3f05183e6e06cdc85bb0646218165b7d7f4b8f555c3795b",
+    "source": "Локальная генерация ComfyUI · SDXL"
+  },
+  {
+    "title": "Чайник и ложка",
+    "technique": "Цифровая плоская графика",
+    "themes": [
+      "чайник",
+      "ложка",
+      "натюрморт"
+    ],
+    "moods": [
+      "сосредоточенность"
+    ],
+    "palette": [
+      "#f0e6d4",
+      "#77736c",
+      "#302e2e"
+    ],
+    "composition": [
+      "вид сверху"
+    ],
+    "directions": [
+      "abstract"
+    ],
+    "id": "comfy-caf045796db7aad658b2b2b6",
+    "src": "data/references/comfy-caf045796db7aad658b2b2b6.webp",
+    "sourceHash": "caf045796db7aad658b2b2b6d07c6edfd0a5241dce881f039c8572654774a99d",
+    "source": "Локальная генерация ComfyUI · SDXL"
+  },
+  {
+    "title": "Кот и коробка",
+    "technique": "Восковые мелки",
+    "themes": [
+      "кот",
+      "коробка",
+      "животные"
+    ],
+    "moods": [
+      "смешливость"
+    ],
+    "palette": [
+      "#a54431",
+      "#58633c",
+      "#d0a659"
+    ],
+    "composition": [
+      "повтор"
+    ],
+    "directions": [
+      "fun"
+    ],
+    "id": "comfy-b3fe27afa1d0261ddd3a9546",
+    "src": "data/references/comfy-b3fe27afa1d0261ddd3a9546.webp",
+    "sourceHash": "b3fe27afa1d0261ddd3a95464cbec920133c09186c01327cd3b38a9651662174",
+    "source": "Локальная генерация ComfyUI · SDXL"
+  },
+  {
+    "title": "Стеклянный шарик · Мелок",
+    "technique": "Натурная макрофотография",
+    "themes": [
+      "стеклянный шарик",
+      "мелок"
+    ],
+    "moods": [
+      "любопытство"
+    ],
+    "palette": [
+      "#e4d8c6",
+      "#968f85",
+      "#534d46"
+    ],
+    "composition": [
+      "контраст фактур"
+    ],
+    "directions": [
+      "odd"
+    ],
+    "id": "comfy-335d5e5e3bea1f899909b113",
+    "src": "data/references/comfy-335d5e5e3bea1f899909b113.webp",
+    "sourceHash": "335d5e5e3bea1f899909b113422d178f41ade0b3172016a502b305477aae1927",
+    "source": "Локальная генерация ComfyUI · SDXL"
+  },
+  {
+    "title": "Плавающее отражение",
+    "technique": "Акварель",
+    "themes": [
+      "отражение",
+      "окно",
+      "вода"
+    ],
+    "moods": [
+      "любопытство"
+    ],
+    "palette": [
+      "#e4d8c6",
+      "#968f85",
+      "#534d46"
+    ],
+    "composition": [
+      "Use a low oblique view with one straight reflection interrupted at two heights"
+    ],
+    "directions": [
+      "abstract"
+    ],
+    "id": "comfy-a7688806303fd7445c6545aa",
+    "src": "data/references/comfy-a7688806303fd7445c6545aa.webp",
+    "sourceHash": "a7688806303fd7445c6545aafe6a8aa5c95ec96748482ef67b47f18b9906fa63",
+    "source": "Локальная генерация ComfyUI · SDXL"
+  },
+  {
+    "title": "Корни в глинистом обрыве",
+    "technique": "Документальная фотография",
+    "themes": [
+      "корни",
+      "силуэт",
+      "глина"
+    ],
+    "moods": [
+      "любопытство"
+    ],
+    "palette": [
+      "#e4d8c6",
+      "#968f85",
+      "#534d46"
+    ],
+    "composition": [
+      "Frame the bank frontally; keep the apparent shoulders inside the outline of the roots"
+    ],
+    "directions": [
+      "odd"
+    ],
+    "id": "comfy-6c0fc5c258de47ba624d93fb",
+    "src": "data/references/comfy-6c0fc5c258de47ba624d93fb.webp",
+    "sourceHash": "6c0fc5c258de47ba624d93fb37409a12ee0fe6cc772fda94c8ed7ae5ab3e399d",
+    "source": "Локальная генерация ComfyUI · SDXL"
+  },
+  {
+    "title": "Пробка · Галька",
+    "technique": "Коллаж",
+    "themes": [
+      "пробка",
+      "галька"
+    ],
+    "moods": [
+      "любопытство"
+    ],
+    "palette": [
+      "#e4d8c6",
+      "#968f85",
+      "#534d46"
+    ],
+    "composition": [
+      "природное и искусственное"
+    ],
+    "directions": [
+      "odd"
+    ],
+    "id": "comfy-d571b936504a55e555f6d913",
+    "src": "data/references/comfy-d571b936504a55e555f6d913.webp",
+    "sourceHash": "d571b936504a55e555f6d9134f77754550ed68873fe193bc937690f3de7702cd",
+    "source": "Локальная генерация ComfyUI · SDXL"
+  },
+  {
+    "title": "Следы на мокрой бумаге",
+    "technique": "Тушь",
+    "themes": [
+      "пятна",
+      "бумага",
+      "поза"
+    ],
+    "moods": [
+      "любопытство"
+    ],
+    "palette": [
+      "#eee9df",
+      "#817d78",
+      "#302e2e"
+    ],
+    "composition": [
+      "Keep the bent contour readable in one patch, with bare paper between the other transfers"
+    ],
+    "directions": [
+      "odd"
+    ],
+    "id": "comfy-9ffab28ef71bdc916650dad0",
+    "src": "data/references/comfy-9ffab28ef71bdc916650dad0.webp",
+    "sourceHash": "9ffab28ef71bdc916650dad0d80daac50b8c55765e6a338676cb536ce2aaf0e3",
+    "source": "Локальная генерация ComfyUI · SDXL"
+  },
+  {
+    "title": "Дым над погасшей спичкой",
+    "technique": "Пастель",
+    "themes": [
+      "дым",
+      "движение",
+      "завитки"
+    ],
+    "moods": [
+      "любопытство"
+    ],
+    "palette": [
+      "#e4d8c6",
+      "#968f85",
+      "#534d46"
+    ],
+    "composition": [
+      "Keep the match at the bottom edge; show the direction of the transparent plume against a darker field"
+    ],
+    "directions": [
+      "abstract"
+    ],
+    "id": "comfy-979ea8f34b918185b2d1da14",
+    "src": "data/references/comfy-979ea8f34b918185b2d1da14.webp",
+    "sourceHash": "979ea8f34b918185b2d1da148009f1ad7b028fa11a28895678a6c25491ac10b1",
+    "source": "Локальная генерация ComfyUI · SDXL"
+  },
+  {
+    "title": "Лёд и обрывок упаковки",
+    "technique": "Акварель",
+    "themes": [
+      "ледяной кубик",
+      "обрывок упаковки"
+    ],
+    "moods": [
+      "любопытство"
+    ],
+    "palette": [
+      "#e4d8c6",
+      "#968f85",
+      "#534d46"
+    ],
+    "composition": [
+      "необычное соседство"
+    ],
+    "directions": [
+      "odd"
+    ],
+    "id": "comfy-4ae442dda3114618c11c1334",
+    "src": "data/references/comfy-4ae442dda3114618c11c1334.webp",
+    "sourceHash": "4ae442dda3114618c11c1334075dc211e5da8e07d9c2eefdba254974af33c313",
+    "source": "Локальная генерация ComfyUI · SDXL"
+  },
+  {
+    "title": "Деревянная косточка · Согнутая карточка · Кусок мыла",
+    "technique": "Линогравюра",
+    "themes": [
+      "деревянная косточка",
+      "согнутая карточка",
+      "кусок мыла"
+    ],
+    "moods": [
+      "любопытство"
+    ],
+    "palette": [
+      "#e4d8c6",
+      "#968f85",
+      "#534d46"
+    ],
+    "composition": [
+      "повторяющиеся силуэты"
+    ],
+    "directions": [
+      "odd"
+    ],
+    "id": "comfy-fe681f7332009f9d632f6c88",
+    "src": "data/references/comfy-fe681f7332009f9d632f6c88.webp",
+    "sourceHash": "fe681f7332009f9d632f6c889254ab26fa38eef22dc56012ebfaa779f2493325",
+    "source": "Локальная генерация ComfyUI · SDXL"
+  },
+  {
+    "id": "blue-fragments",
+    "src": "data/references/blue-fragments.png",
+    "title": "Портрет с синими осколками",
+    "technique": "Цифровая живопись",
+    "themes": [
+      "портрет",
+      "жест",
+      "стекло"
+    ],
+    "moods": [
+      "напряжение",
+      "сосредоточенность"
+    ],
+    "palette": [
+      "#24909e",
+      "#30262c",
+      "#bda18a",
+      "#63778d",
+      "#83443e"
+    ],
+    "source": "ComfyUI, изображение пользователя"
+  },
+  {
+    "id": "white-cat-on-chair",
+    "src": "data/references/white-cat-on-chair.png",
+    "title": "Белая кошка на зелёном стуле",
+    "technique": "Цифровая графика",
+    "themes": [
+      "кошка",
+      "интерьер",
+      "дерево"
+    ],
+    "moods": [
+      "спокойствие",
+      "уют"
+    ],
+    "palette": [
+      "#e4e1d1",
+      "#3b4c31",
+      "#a5a38b",
+      "#20251e",
+      "#777c5f"
+    ],
+    "source": "ComfyUI, изображение пользователя"
+  },
+  {
+    "id": "portrait-with-mirror",
+    "src": "data/references/portrait-with-mirror.png",
+    "title": "Портрет с ручным зеркалом",
+    "technique": "Цифровая живопись",
+    "themes": [
+      "портрет",
+      "зеркало",
+      "отражение"
+    ],
+    "moods": [
+      "задумчивость",
+      "напряжение"
+    ],
+    "palette": [
+      "#b85e69",
+      "#53929f",
+      "#29212a",
+      "#952329",
+      "#bc9279"
+    ],
+    "source": "ComfyUI, изображение пользователя"
+  },
+  {
+    "id": "white-fox-in-the-woods",
+    "src": "data/references/white-fox-in-the-woods.png",
+    "title": "Лес и белая лиса",
+    "technique": "Цифровая иллюстрация",
+    "themes": [
+      "лиса",
+      "лес",
+      "женская фигура"
+    ],
+    "moods": [
+      "тишина",
+      "загадочность"
+    ],
+    "palette": [
+      "#e1ded0",
+      "#172e29",
+      "#1f2221",
+      "#677d68",
+      "#8f8d85"
+    ],
+    "source": "ComfyUI, изображение пользователя"
+  },
+  {
+    "id": "white-raven",
+    "src": "data/references/white-raven.png",
+    "title": "Белый ворон в лесу",
+    "technique": "Цифровая живопись",
+    "themes": [
+      "ворон",
+      "лес",
+      "силуэт"
+    ],
+    "moods": [
+      "загадочность",
+      "настороженность"
+    ],
+    "palette": [
+      "#e7e2d8",
+      "#1a2927",
+      "#7b8267",
+      "#aaa486",
+      "#5f6c64"
+    ],
+    "source": "ComfyUI, изображение пользователя"
+  },
+  {
+    "id": "moth-silhouette",
+    "src": "data/references/moth-silhouette.png",
+    "title": "Фигура на фоне крыльев мотылька",
+    "technique": "Цифровая акварель",
+    "themes": [
+      "мотылёк",
+      "силуэт",
+      "симметрия"
+    ],
+    "moods": [
+      "созерцание",
+      "сюрреализм"
+    ],
+    "palette": [
+      "#bd9c65",
+      "#8ea2a1",
+      "#17252f",
+      "#ddd1b7",
+      "#53504a"
+    ],
+    "source": "ComfyUI, изображение пользователя"
+  }
+]

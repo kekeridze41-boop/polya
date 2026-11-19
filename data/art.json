@@ -1,0 +1,62 @@
+[
+  {
+    "id": "graphite",
+    "text": "Карандаш · чашка и ложка",
+    "tag": "daily",
+    "src": "data/art/graphite.svg"
+  },
+  {
+    "id": "pen",
+    "text": "Ручка · жесты птиц",
+    "tag": "fun",
+    "src": "data/art/pen.svg"
+  },
+  {
+    "id": "gouache",
+    "text": "Гуашь · растения в окне",
+    "tag": "daily",
+    "src": "data/art/gouache.svg"
+  },
+  {
+    "id": "geometry",
+    "text": "Геометрия · три формы",
+    "tag": "abstract",
+    "src": "data/art/geometry.svg"
+  },
+  {
+    "id": "collage",
+    "text": "Коллаж · вырезки и сетка",
+    "tag": "odd",
+    "src": "data/art/collage.svg"
+  },
+  {
+    "id": "pixel",
+    "text": "Пиксель-арт · автомат",
+    "tag": "fun",
+    "src": "data/art/pixel.svg"
+  },
+  {
+    "id": "ink",
+    "text": "Ксилография · мост",
+    "tag": "dark",
+    "src": "data/art/ink.svg"
+  },
+  {
+    "id": "wash",
+    "text": "Акварель · проба пятен",
+    "tag": "abstract",
+    "src": "data/art/wash.svg"
+  },
+  {
+    "id": "poster",
+    "text": "Плакат · велосипед",
+    "tag": "daily",
+    "src": "data/art/poster.svg"
+  },
+  {
+    "id": "crayon",
+    "text": "Мелки · зверь из чайника",
+    "tag": "odd",
+    "src": "data/art/crayon.svg"
+  }
+]
