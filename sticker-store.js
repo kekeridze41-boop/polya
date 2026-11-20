@@ -2,11 +2,13 @@ let stickerDatabase;
 
 function openStickerDatabase() {
   if (!stickerDatabase) stickerDatabase = new Promise((resolve, reject) => {
-    const request = indexedDB.open('polya-stickers', 3);
+    const request = indexedDB.open('polya-stickers', 5);
     request.onupgradeneeded = event => {
       if (event.oldVersion < 1) request.result.createObjectStore('images', {keyPath: 'id'});
       if (event.oldVersion < 2) request.result.createObjectStore('layouts');
       if (event.oldVersion < 3) request.result.createObjectStore('idea-variants', {keyPath: 'id'});
+      if (event.oldVersion < 4) request.result.createObjectStore('reference-images', {keyPath: 'id'});
+      if (event.oldVersion < 5) request.result.createObjectStore('reference-drawings', {keyPath: 'id'});
     };
     request.onsuccess = () => {
       const database = request.result;

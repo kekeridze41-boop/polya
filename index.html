@@ -14,6 +14,8 @@
   <script defer src="sticker-finish.js"></script>
   <script defer src="reference-palette.js"></script>
   <script defer src="book-motion.js"></script>
+  <script defer src="reference-deck.js"></script>
+  <script defer src="own-references.js"></script>
   <script defer src="app.js"></script>
 </head>
 <body>
@@ -27,7 +29,7 @@
     <div class="paper-pages" aria-hidden="true"></div>
     <header class="notebook-header">
       <div class="identity"><strong>Поля</strong><span>Художественный архив</span></div>
-      <div class="book-actions"><button id="show-archive" class="archive-button">Архив <span id="count">0</span></button><button id="close-book" title="Закрыть блокнот" aria-label="Закрыть блокнот">▰</button></div>
+      <div class="book-actions"><button id="show-own" class="archive-button">Свои</button><button id="show-archive" class="archive-button">Архив <span id="count">0</span></button><button id="close-book" title="Закрыть блокнот" aria-label="Закрыть блокнот">▰</button></div>
     </header>
     <div id="tools" class="tools" hidden>
       <div class="tool-row" role="group" aria-label="Инструменты наброска">
@@ -72,7 +74,7 @@
         <div class="picture"><canvas id="reference" width="960" height="520" role="img"></canvas></div>
         <p id="reference-status" class="reference-status" hidden></p>
         <div id="desktop-palette"><div id="palette" class="palette" aria-label="Цвета референса" hidden></div></div>
-        <div class="actions"><button id="next" class="primary">Следующее</button><button id="save">В архив</button><button id="back-to-archive" hidden>← Назад в архив</button></div>
+        <div class="actions"><button id="next" class="primary">Следующее</button><button id="save">В архив</button><button id="leave-own" hidden>К встроенным</button><button id="back-to-archive" hidden>← Назад в архив</button></div>
       </article>
       <button class="drawer-tab" id="left-tab" type="button" aria-expanded="false" aria-controls="left-margin" aria-label="Левое поле" title="Потяните или нажмите"></button>
       <button class="drawer-tab" id="right-tab" type="button" aria-expanded="false" aria-controls="right-margin" aria-label="Правое поле" title="Потяните или нажмите"></button>
@@ -84,6 +86,28 @@
   </main>
   <dialog id="confirm-turn"><form method="dialog"><p>Перелистнуть страницу и стереть рисунок с полей?</p><div class="archive-actions"><button value="cancel" autofocus>Отмена</button><button value="turn">Перелистнуть</button></div></form></dialog>
   <dialog id="confirm-delete"><form method="dialog"><p>Удалить эту работу из архива?</p><div class="archive-actions"><button value="cancel" autofocus>Отмена</button><button value="delete">Удалить</button></div></form></dialog>
+  <dialog id="own-library" aria-labelledby="own-heading">
+    <div class="dialog-head"><h2 id="own-heading">Свои</h2><button id="close-own" aria-label="Вернуться в блокнот">×</button></div>
+    <button id="add-own">Добавить изображение</button>
+    <input id="own-files" type="file" multiple accept="image/jpeg,image/png,image/webp,.jpeg,.jpg,.png,.webp" hidden>
+    <p id="own-status" role="status"></p>
+    <div id="own-grid" class="own-grid"></div>
+  </dialog>
+  <dialog id="confirm-own-exit"><form method="dialog">
+    <p>Сохранить изменения перед выходом?</p>
+    <div class="archive-actions"><button value="save">Сохранить</button><button value="discard">Не сохранять</button><button value="cancel" autofocus>Отмена</button></div>
+  </form></dialog>
+  <dialog id="own-name-dialog" aria-labelledby="own-name-heading"><form method="dialog">
+    <h2 id="own-name-heading">Название изображения</h2>
+    <img id="own-name-preview" alt="" hidden>
+    <label for="own-name-input">Название</label>
+    <input id="own-name-input" maxlength="100" placeholder="Без названия" autofocus>
+    <div class="archive-actions"><button id="own-name-submit" value="accept" type="submit">Сохранить</button><button value="cancel" type="submit">Отмена</button></div>
+  </form></dialog>
+  <dialog id="confirm-own-delete"><form method="dialog">
+    <p>Удалить изображение из «Своих»?</p>
+    <div class="archive-actions"><button value="cancel" autofocus>Отмена</button><button value="delete">Удалить</button></div>
+  </form></dialog>
   <dialog id="archive"><div class="dialog-head"><h2>Архив находок</h2><button id="close-archive" aria-label="Закрыть архив">×</button></div><p id="archive-status" role="status"></p><div id="entries"></div></dialog>
 </body>
 </html>

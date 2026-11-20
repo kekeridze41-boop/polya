@@ -33,7 +33,7 @@ function bindHorizontalPull(handle, handlers) {
   };
 }
 
-function setupBookCover({blocked, save, reducedMotion, opened}) {
+function setupBookCover({blocked, beforeClose, save, reducedMotion, opened}) {
   const key = 'polya.cover-opened.v1';
   const cover = document.getElementById('cover-stage');
   const notebook = document.querySelector('.notebook');
@@ -78,10 +78,14 @@ function setupBookCover({blocked, save, reducedMotion, opened}) {
     },
     tap: open,
   });
-  close.onclick = () => {
+  close.onclick = async () => {
     if (busy || blocked()) return;
-    save();
-    setClosed(true, true);
+    busy = true;
+    try {
+      if (beforeClose && !await beforeClose()) return;
+      save();
+      setClosed(true, true);
+    } finally { busy = false; }
   };
   setClosed(!seen);
 }

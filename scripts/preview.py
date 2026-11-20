@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PUBLIC = {'index.html', 'app.js', 'styles.css', 'book-motion.js', 'paper-grain.png', 'reference-catalog.js', 'reference-palette.js',
+PUBLIC = {'index.html', 'app.js', 'styles.css', 'book-motion.js', 'paper-grain.png', 'reference-catalog.js', 'reference-palette.js', 'reference-deck.js', 'own-references.js',
           'references.js', 'sticker-finish.js', 'sticker-store.js', 'stickers.js'}
 
 

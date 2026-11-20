@@ -3,6 +3,11 @@ const workspace = byId('workspace');
 const drawing = byId('drawing');
 const reference = byId('reference');
 const archiveDialog = byId('archive');
+const ownDialog = byId('own-library');
+const referenceDeck = createReferenceDeck({
+  getItem: key => localStorage.getItem(key),
+  setItem: (key, value) => localStorage.setItem(key, value),
+});
 const drawingSurfaces = [...workspace.querySelectorAll('.draw-surface')];
 const storageKey = 'polya.archive.v1';
 const drawingDraftKey = 'polya.drawing-draft.v1';
@@ -19,7 +24,7 @@ const stickerLayer = byId('sticker-layer');
 const fieldStickerLayers = [...workspace.querySelectorAll('.field-sticker-layer')];
 const composition = workspace.querySelector('.composition');
 const draftKey = 'polya.sticker-layout.v1';
-let selection = {parts: {art: referenceCatalog[0] ?? null}};
+let selection = {parts: {art: null}};
 let legacyNotes = [];
 let legacyPins = [];
 let currentColors = [];
@@ -40,6 +45,12 @@ let hasCachedStickerLayout = false;
 let stickerChoice = null;
 let selectedSticker = null;
 let archive = [];
+let builtInDraft = null;
+let ownTransition = false;
+let ownBaseline = '[]';
+let legacyOwnLayout;
+let savingOwn = false;
+let builtInHistory;
 
 try {
   const stored = JSON.parse(localStorage.getItem(storageKey));
@@ -50,6 +61,15 @@ try {
     selection = draft.selection?.parts ? draft.selection : selection;
     legacyNotes = draft.notes ?? [];
     legacyPins = draft.pins ?? [];
+    if (selection.parts.art?.own && draft.builtInDraft) {
+      const {stickers: previousLayout, ...previousDraft} = draft.builtInDraft;
+      builtInDraft = previousDraft;
+      if (Array.isArray(draft.ownStickers)) legacyOwnLayout = {previousLayout, own: draft.ownStickers};
+      const baseline = JSON.parse(draft.ownBaseline ?? '[]');
+      ownBaseline = legacyOwnLayout ? JSON.stringify(baseline[0] ?? []) : JSON.stringify(baseline);
+      const oldArt = selection.parts.art;
+      selection = {parts: {art: {id: oldArt.id, own: true, name: ownName(oldArt.name)}}};
+    }
     const settings = draft.settings;
     if (settings) {
       if (settings.sketch !== false && toolIds.includes(settings.tool)) tool = settings.tool;
@@ -78,7 +98,7 @@ function updateHistory() {
 
 function visibleArt() { return (archivedWork?.selection ?? selection).parts.art; }
 function visibleStrokes() { return archivedWork?.strokes ?? strokes; }
-function visibleStickers() { return archivedWork?.stickers ?? stickers; }
+function visibleStickers() { return stickers; }
 
 function showPalette(colors) {
   currentColors = colors.slice(0, 5);
@@ -105,7 +125,8 @@ function saveDrawingDraft() {
   if (archivedWork) return;
   try {
     const settings = {tool, color: byId('ink').value, width: Number(byId('width').value)};
-    localStorage.setItem(drawingDraftKey, JSON.stringify({selection, strokes, notes: legacyNotes, pins: legacyPins, settings}));
+    const ownDraft = builtInDraft ? {builtInDraft, ownBaseline} : {};
+    localStorage.setItem(drawingDraftKey, JSON.stringify({selection, strokes, notes: legacyNotes, pins: legacyPins, settings, ...ownDraft}));
   } catch { announce('Не удалось сохранить черновик в браузере.'); }
 }
 
@@ -123,7 +144,7 @@ function paintIdeaArt(art) {
   status.textContent = 'В каталоге пока нет изображений.';
   byId('save').disabled = true;
   showPalette([]);
-  reference.setAttribute('aria-label', art?.title ?? art?.text ?? 'Референс отсутствует');
+  reference.setAttribute('aria-label', art?.own ? ownName(art.name) : art?.title ?? art?.text ?? 'Референс отсутствует');
   if (!art) {
     referenceReady = Promise.resolve();
     return;
@@ -172,12 +193,17 @@ function decodedReference(art) {
   const key = art.id;
   if (!artImages.has(key)) {
     if (artImages.size >= 4) artImages.delete(artImages.keys().next().value);
-    artImages.set(key, referenceImageSource(art).then(async src => {
-      const image = new Image();
-      image.src = src;
-      await image.decode();
-      return image;
-    }).catch(error => {
+    artImages.set(key, (async () => {
+      const record = art.own ? await ownReference(key) : null;
+      if (art.own && !record) throw Error('Изображение отсутствует в хранилище.');
+      const src = record ? URL.createObjectURL(record.blob) : await referenceImageSource(art);
+      try {
+        const image = new Image();
+        image.src = src;
+        await image.decode();
+        return image;
+      } finally { if (record) URL.revokeObjectURL(src); }
+    })().catch(error => {
       artImages.delete(key);
       throw error;
     }));
@@ -188,6 +214,9 @@ function decodedReference(art) {
 function renderIdea() {
   updateReferenceSpace();
   const art = visibleArt();
+  byId('next').hidden = !!archivedWork || !!art?.own;
+  byId('leave-own').hidden = !!archivedWork || !art?.own;
+  byId('save').textContent = art?.own ? 'Сохранить' : 'В архив';
   byId('next').disabled = turning || !!archivedWork || !referenceCatalog.some(item => item.id !== art?.id);
   paintIdeaArt(art);
   byId('save').disabled = !!archivedWork || !referenceAvailable;
@@ -205,9 +234,8 @@ function confirmPageTurn() {
 }
 
 byId('next').onclick = async () => {
-  if (archivedWork || turning || active || (mobileSpread.matches && (openDrawer >= 0 || movingDrawer >= 0))) return;
-  const current = referenceCatalog.findIndex(item => item.id === selection.parts.art?.id);
-  const art = referenceCatalog[(current + 1) % referenceCatalog.length];
+  if (archivedWork || turning || active || selection.parts.art?.own || (mobileSpread.matches && (openDrawer >= 0 || movingDrawer >= 0))) return;
+  const art = referenceDeck.peek(referenceCatalog, selection.parts.art?.id);
   if (!art || art.id === selection.parts.art?.id) return;
   turning = true;
   byId('next').disabled = true;
@@ -224,6 +252,7 @@ byId('next').onclick = async () => {
       pageTurn = beginPaperTurn(document.querySelector('.notebook'), paintTurnSnapshot, mobileSpread.matches);
     }
     selection = {parts: {art}};
+    referenceDeck.advance(art.id);
     // Keep only revisions that change the persistent stickers.
     undoStack = undoStack.filter((revision, index) => revision.stickers !== (undoStack[index + 1]?.stickers ?? stickers))
       .map(({stickers}) => ({strokes: [], stickers}));
@@ -246,11 +275,17 @@ byId('next').onclick = async () => {
     renderIdea();
   }
 };
-loadReferenceCatalog().then(() => {
+loadReferenceCatalog().catch(() => announce('Каталог на сервере недоступен, используется локальная версия.')).then(() => {
   if (archivedWork) return;
-  if (!selection.parts.art && referenceCatalog.length) selection = {parts: {art: referenceCatalog[0]}};
+  referenceDeck.sync(referenceCatalog, (builtInDraft?.selection ?? selection).parts.art?.id);
+  if (!selection.parts.art && referenceCatalog.length) {
+    const art = referenceDeck.peek(referenceCatalog);
+    selection = {parts: {art}};
+    referenceDeck.advance(art.id);
+    saveDrawingDraft();
+  }
   renderIdea();
-}).catch(() => announce('Каталог на сервере недоступен, используется локальная версия.'));
+});
 
 function refreshMode() {
   const editing = !archivedWork;
@@ -259,7 +294,7 @@ function refreshMode() {
   workspace.classList.toggle('stickering', editing && tool === 'stickers');
   byId('close-book').disabled = !editing;
   byId('tools').hidden = !editing;
-  byId('next').hidden = byId('save').hidden = !editing;
+  byId('save').hidden = byId('show-own').disabled = !editing;
   byId('back-to-archive').hidden = editing;
   for (const id of toolIds) byId(id).setAttribute('aria-pressed', id === tool);
 }
@@ -603,6 +638,15 @@ const storedStickersReady = Promise.all([
   renderStickers();
 }).catch(() => {
   byId('sticker-message').textContent = 'Хранилище браузера недоступно. Встроенные вклейки работают.';
+}).then(() => {
+  if (!legacyOwnLayout) return;
+  const merged = new Map([...(legacyOwnLayout.previousLayout ?? []), ...stickers, ...legacyOwnLayout.own]
+    .map(sticker => [sticker.id, sticker]));
+  stickers = [...merged.values()];
+  legacyOwnLayout = null;
+  saveStickerLayout();
+  saveDrawingDraft();
+  renderStickers();
 });
 
 byId('sticker-file').onchange = async event => {
@@ -864,17 +908,43 @@ function commitArchive(next) {
   return true;
 }
 
-byId('save').onclick = () => {
-  if (archivedWork || !selection.parts.art || byId('save').disabled) return;
-  const same = archive.some(entry => archiveIdea(entry.selection).parts.art?.id === selection.parts.art.id &&
-    JSON.stringify([entry.strokes ?? [], entry.stickers ?? [], entry.notes ?? []]) === JSON.stringify([strokes, stickers, legacyNotes]));
-  if (same) return announce('Эта работа уже в архиве.');
-  const entry = {selection, pins: legacyPins, strokes, stickers, notes: legacyNotes, date: Date.now()};
-  if (commitArchive([entry, ...archive])) announce('Работа сохранена в архиве.');
-};
+function ownFingerprint() { return JSON.stringify(strokes); }
+
+function alreadyArchived() {
+  return archive.some(entry => archiveIdea(entry.selection).parts.art?.id === selection.parts.art?.id &&
+    JSON.stringify([entry.strokes ?? [], entry.notes ?? []]) === JSON.stringify([strokes, legacyNotes]));
+}
+
+function saveToArchive() {
+  if (archivedWork || !selection.parts.art || selection.parts.art.own || byId('save').disabled) return false;
+  const same = alreadyArchived();
+  const entry = {selection, pins: legacyPins, strokes, notes: legacyNotes, date: Date.now()};
+  if (!same && !commitArchive([entry, ...archive])) return false;
+  announce(same ? 'Эта работа уже в архиве.' : 'Работа сохранена в архиве.');
+  return true;
+}
+
+async function saveOwnWork() {
+  const art = selection.parts.art;
+  if (!art?.own || archivedWork || savingOwn || !referenceAvailable) return false;
+  savingOwn = true;
+  const snapshot = strokes;
+  try {
+    await saveOwnDrawing(art.id, snapshot);
+    ownBaseline = JSON.stringify(snapshot);
+    saveDrawingDraft();
+    announce('Рисунок сохранён.');
+    return true;
+  } catch (error) {
+    announce(ownError(error));
+    return false;
+  } finally { savingOwn = false; }
+}
+
+byId('save').onclick = () => selection.parts.art?.own ? saveOwnWork() : saveToArchive();
 
 function archiveTitle(entry, saved) {
-  return entry.name ?? saved.parts.art?.title ?? saved.parts.art?.text ?? saved.legacy?.title ?? 'Работа без названия';
+  return entry.name ?? (saved.parts.art?.own ? ownName(saved.parts.art.name) : saved.parts.art?.title) ?? saved.parts.art?.text ?? saved.legacy?.title ?? 'Работа без названия';
 }
 
 function editArchiveName(container, entry, title) {
@@ -951,7 +1021,7 @@ function renderArchive() {
     const open = document.createElement('button');
     open.textContent = 'Открыть';
     open.onclick = () => {
-      archivedWork = {selection: saved, strokes: entry.strokes ?? [], stickers: entry.stickers ?? []};
+      archivedWork = {selection: saved, strokes: entry.strokes ?? []};
       cancelAnimationFrame(drawerFrame);
       openDrawer = movingDrawer = -1;
       layoutDrawers();
@@ -1005,8 +1075,217 @@ function showArchive() {
   archiveDialog.showModal();
 }
 
-byId('show-archive').onclick = showArchive;
+byId('show-archive').onclick = async () => {
+  if (selection.parts.art?.own && !archivedWork && !await switchOwnReference(null)) return;
+  showArchive();
+};
 byId('back-to-archive').onclick = showArchive;
+
+function askOwnAction(id) {
+  const dialog = byId(id);
+  dialog.returnValue = '';
+  return new Promise(resolve => {
+    dialog.addEventListener('close', () => resolve(dialog.returnValue), {once: true});
+    dialog.showModal();
+  });
+}
+
+async function canLeaveOwn() {
+  if (!selection.parts.art?.own || ownBaseline === ownFingerprint()) return true;
+  const action = await askOwnAction('confirm-own-exit');
+  return action === 'discard' || (action === 'save' && await saveOwnWork());
+}
+
+function usedByArchive(id) {
+  let saved = archive;
+  try { saved = JSON.parse(localStorage.getItem(storageKey)) ?? archive; } catch { /* Keep the in-memory archive. */ }
+  return saved.some(entry => archiveIdea(entry.selection).parts.art?.id === id);
+}
+
+async function switchOwnReference(record) {
+  if (ownTransition || turning || archivedWork || active || savingOwn) return false;
+  if (record && record.id === selection.parts.art?.id) {
+    if (ownDialog.open) ownDialog.close();
+    return true;
+  }
+  ownTransition = true;
+  try {
+    let savedDrawing;
+    if (record) {
+      await decodedReference({id: record.id, own: true});
+      savedDrawing = await ownDrawing(record.id);
+    }
+    if (!await canLeaveOwn()) return false;
+    await storedStickersReady;
+    if (record) {
+      if (!builtInDraft) {
+        builtInDraft = {selection, strokes, legacyNotes, legacyPins};
+        builtInHistory = {undoStack, redoStack, stickers};
+      }
+      selection = {parts: {art: {id: record.id, name: ownName(record.name), own: true}}};
+      // Previous versions stored these drawings as archive entries. Keep the originals.
+      const oldEntry = archive.find(entry => archiveIdea(entry.selection).parts.art?.id === record.id);
+      strokes = savedDrawing?.strokes ?? oldEntry?.strokes ?? [];
+      legacyNotes = legacyPins = [];
+      undoStack = [];
+      redoStack = [];
+      ownBaseline = ownFingerprint();
+    } else if (builtInDraft) {
+      ({selection, strokes, legacyNotes, legacyPins} = builtInDraft);
+      const restore = revisions => (revisions ?? []).map(revision => builtInHistory.stickers === stickers
+        ? revision : {strokes: revision.strokes, stickers});
+      undoStack = restore(builtInHistory?.undoStack);
+      redoStack = restore(builtInHistory?.redoStack);
+      builtInDraft = builtInHistory = null;
+    } else {
+      selection = {parts: {art: referenceDeck.peek(referenceCatalog)}};
+      if (selection.parts.art) referenceDeck.advance(selection.parts.art.id);
+      strokes = [];
+      undoStack = redoStack = [];
+    }
+    cancelAnimationFrame(drawerFrame);
+    openDrawer = movingDrawer = -1;
+    stickerChoice = selectedSticker = null;
+    layoutDrawers();
+    if (ownDialog.open) ownDialog.close();
+    refreshSpread();
+    updateHistory();
+    saveDrawingDraft();
+    return true;
+  } catch (error) {
+    const message = ownError(error);
+    if (ownDialog.open) byId('own-status').textContent = message;
+    else announce(message);
+    return false;
+  } finally { ownTransition = false; }
+}
+
+function ownError(error) {
+  return error?.name === 'QuotaExceededError' ? 'В браузере недостаточно места для изображения.'
+    : error?.message || 'Хранилище изображений недоступно.';
+}
+
+async function askOwnName(record, rename = false) {
+  const heading = byId('own-name-heading');
+  const input = byId('own-name-input');
+  const preview = byId('own-name-preview');
+  heading.textContent = rename ? 'Переименовать изображение' : 'Название изображения';
+  byId('own-name-submit').textContent = rename ? 'Сохранить' : 'Добавить';
+  input.value = rename ? record.name ?? '' : '';
+  const url = URL.createObjectURL(record.thumbnail);
+  preview.src = url;
+  preview.hidden = false;
+  try {
+    const answer = await askOwnAction('own-name-dialog');
+    return answer === 'accept' ? ownName(input.value) : null;
+  } finally {
+    preview.removeAttribute('src');
+    preview.hidden = true;
+    URL.revokeObjectURL(url);
+  }
+}
+
+let galleryUrls = [];
+function clearOwnGallery() {
+  for (const url of galleryUrls) URL.revokeObjectURL(url);
+  galleryUrls = [];
+  byId('own-grid').replaceChildren();
+}
+
+async function renderOwnGallery() {
+  const records = (await ownReferences()).filter(record => !record.hidden).sort((a, b) => b.date - a.date);
+  if (!ownDialog.open) return;
+  clearOwnGallery();
+  const grid = byId('own-grid');
+  if (!records.length) grid.textContent = 'Здесь появятся ваши изображения.';
+  for (const record of records) {
+    const entry = document.createElement('div');
+    entry.className = 'own-entry';
+    const title = ownName(record.name);
+    const thumbnail = document.createElement('button');
+    thumbnail.className = 'own-thumbnail';
+    thumbnail.setAttribute('aria-label', 'Открыть: ' + title);
+    thumbnail.onclick = () => switchOwnReference(record);
+    const img = new Image();
+    img.alt = '';
+    img.loading = 'lazy';
+    img.src = URL.createObjectURL(record.thumbnail);
+    galleryUrls.push(img.src);
+    thumbnail.append(img);
+    const label = document.createElement('div');
+    label.className = 'own-title';
+    label.textContent = title;
+    label.title = title;
+    const actions = document.createElement('div');
+    actions.className = 'own-actions';
+    const open = document.createElement('button');
+    open.textContent = 'Открыть';
+    open.onclick = thumbnail.onclick;
+    const rename = document.createElement('button');
+    rename.textContent = 'Переименовать';
+    rename.onclick = async () => {
+      const name = await askOwnName(record, true);
+      if (name === null) return;
+      try {
+        await renameOwnReference(record.id, name);
+        await renderOwnGallery();
+      } catch (error) { byId('own-status').textContent = ownError(error); }
+    };
+    const remove = document.createElement('button');
+    remove.textContent = 'Удалить';
+    remove.setAttribute('aria-label', 'Удалить: ' + title);
+    remove.onclick = async () => {
+      if (await askOwnAction('confirm-own-delete') !== 'delete') return;
+      try {
+        await deleteOwnReference(record, usedByArchive(record.id) || selection.parts.art?.id === record.id);
+        artImages.delete(record.id);
+        await renderOwnGallery();
+      } catch (error) { byId('own-status').textContent = ownError(error); }
+    };
+    actions.append(open, rename, remove);
+    entry.append(thumbnail, label, actions);
+    grid.append(entry);
+  }
+}
+
+byId('show-own').onclick = async () => {
+  if (archivedWork || turning || ownTransition || active || ownDialog.open) return;
+  if (selection.parts.art?.own && !await switchOwnReference(null)) return;
+  byId('own-status').textContent = '';
+  ownDialog.showModal();
+  renderOwnGallery().catch(error => { byId('own-status').textContent = ownError(error); });
+};
+byId('close-own').onclick = () => ownDialog.close();
+ownDialog.addEventListener('close', () => { if (!ownDialog.open) clearOwnGallery(); });
+byId('leave-own').onclick = () => switchOwnReference(null);
+byId('add-own').onclick = () => byId('own-files').click();
+byId('own-files').onchange = async event => {
+  const input = event.target;
+  const files = [...input.files];
+  input.value = '';
+  if (!files.length) return;
+  const status = byId('own-status');
+  byId('add-own').disabled = true;
+  status.textContent = 'Добавляем изображения…';
+  let count = 0;
+  const errors = [];
+  try {
+    for (const [index, file] of files.entries()) {
+      if (!ownDialog.open) break;
+      try {
+        const record = await prepareOwnReference(file);
+        if (!ownDialog.open) break;
+        const name = await askOwnName(record);
+        if (name === null) continue;
+        await storeOwnReference({...record, name});
+        count++;
+      } catch (error) { errors.push('Изображение ' + (index + 1) + ' — ' + ownError(error)); }
+    }
+    await renderOwnGallery();
+    status.textContent = [count ? 'Добавлено: ' + count + '.' : '', ...errors].filter(Boolean).join(' ');
+  } catch (error) { status.textContent = ownError(error); }
+  finally { byId('add-own').disabled = false; }
+};
 
 byId('close-archive').onclick = () => archiveDialog.close();
 for (const id of ['ink', 'width']) byId(id).addEventListener('change', saveDrawingDraft);
@@ -1155,7 +1434,8 @@ const workspaceObserver = new ResizeObserver(() => {
 });
 for (const element of [workspace, ...anchors, composition]) workspaceObserver.observe(element);
 setupBookCover({
-  blocked: () => turning || !!archivedWork || archiveDialog.open,
+  blocked: () => turning || ownTransition || savingOwn || !!archivedWork || archiveDialog.open,
+  beforeClose: () => !selection.parts.art?.own || switchOwnReference(null),
   save: () => { active = null; saveDrawingDraft(); },
   reducedMotion: reduceMotion,
   opened: repaintSpread,
